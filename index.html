@@ -29,7 +29,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a1a;
+            background: #141516;
             color: #e0e0e0;
             overflow-x: hidden;
             line-height: 1.6;
@@ -54,19 +54,26 @@
             padding: 15px 20px;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+            transition: transform 0.3s ease; /* Smooth hide/show transition */
+        }
+
+        header.hidden {
+            transform: translateY(-100%); /* Hides the header by moving it up */
         }
 
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         nav ul li {
-            margin: 0 20px;
+            margin: 0 15px;
         }
 
         nav ul li a {
@@ -81,36 +88,34 @@
             color: #ff007a;
         }
 
-
+        /* Request Resume Button in Header */
         #request-resume-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    border: calc(0.08 * var(--m)) solid transparent;
-    color: #F3F3F3;
-    font-family: 'Space Grotesk';
-    font-size: 1.2rem; /* font size for desktop */
-    border-radius: calc(0.7 * var(--m));
-    padding: 0.5rem 1rem; /* padding for desktop */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    background: linear-gradient(#121213, #121213), linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
-    background-origin: border-box;
-    background-clip: padding-box, border-box, border-box;
-    background-size: 200%;
-    animation: animate 2s infinite linear;
-}
+            border: calc(0.08 * var(--m)) solid transparent;
+            color: #F3F3F3;
+            font-family: 'Space Grotesk';
+            font-size: 1.2rem;
+            border-radius: calc(0.7 * var(--m));
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            background: linear-gradient(#121213, #121213), linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
+            background-origin: border-box;
+            background-clip: padding-box, border-box, border-box;
+            background-size: 200%;
+            animation: animate 2s infinite linear;
+            white-space: nowrap;
+        }
 
         #request-resume-btn::before {
             content: '';
             background: linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
-            height: 5%;
-            width: 5%;
+            height: 20%;
+            width: 40%;
             position: absolute;
-            bottom: -5%;
+            bottom: -10%;
             z-index: -5;
             background-size: 200%;
             animation: animate 2s infinite linear;
@@ -126,7 +131,7 @@
             100% { background-position: 200%; }
         }
 
-          #hero {
+        #hero {
             height: 100vh;
             display: flex;
             align-items: center;
@@ -184,6 +189,7 @@
             color: #00d4ff;
             margin-bottom: 20px;
             position: relative;
+            text-align: center;
         }
 
         h2::after {
@@ -193,7 +199,8 @@
             height: 3px;
             background: #ff007a;
             bottom: -10px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .card {
@@ -212,10 +219,12 @@
         .card h3 {
             color: #ff007a;
             margin-bottom: 10px;
+            text-align: center;
         }
 
         ul {
             list-style: none;
+            text-align: left;
         }
 
         ul li {
@@ -237,6 +246,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
         }
 
         #skills ul li, #interests ul li, #languages ul li {
@@ -269,6 +279,8 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            background-color: #00d4ff;
+            color: #1a1a1a;
         }
 
         #contact .btn i {
@@ -323,28 +335,30 @@
 
         /* Mobile Support */
         @media (max-width: 768px) {
-    header {
-        padding: 10px;
-        flex-direction: column;
-        align-items: center;
-    }
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-    }
-    nav ul li {
-        margin: 10px 0;
-    }
-    #request-resume-btn {
-        position: static;
-        margin-top: 10px;
-        width: 100%;
-        text-align: center;
-        font-size: 1rem; /* Smaller font size for mobile */
-        padding: 0.4rem 0.8rem; /* Smaller padding for mobile */
-    }
-}
+            header {
+                padding: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul {
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            #request-resume-btn {
+                margin-top: 10px;
+                width: auto;
+                text-align: center;
+                font-size: 0.9rem;
+                padding: 0.3rem 0.6rem;
+            }
+            #hero {
+                height: 60vh;
+            }
             #hero h1 {
                 font-size: 2em;
             }
@@ -352,10 +366,37 @@
                 font-size: 1em;
             }
             section {
-                padding: 40px 10px;
+                padding: 30px 15px;
             }
             h2 {
-                font-size: 2em;
+                font-size: 1.8em;
+                text-align: center;
+            }
+            h2::after {
+                width: 30px;
+                height: 2px;
+            }
+            .card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            .card h3 {
+                font-size: 1.2em;
+            }
+            ul {
+                padding-left: 10px;
+            }
+            ul li {
+                margin: 8px 0;
+                padding-left: 15px;
+                font-size: 0.9em;
+            }
+            #skills ul, #interests ul, #languages ul {
+                justify-content: center;
+            }
+            #skills ul li, #interests ul li, #languages ul li {
+                padding: 6px 12px;
+                font-size: 0.8em;
             }
             #contact .buttons {
                 flex-direction: column;
@@ -364,6 +405,60 @@
             #contact .btn {
                 width: 100%;
                 justify-content: center;
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero {
+                height: 50vh;
+            }
+            #hero h1 {
+                font-size: 1.5em;
+            }
+            #hero .typewriter {
+                font-size: 0.8em;
+            }
+            section {
+                padding: 20px 10px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h2::after {
+                width: 20px;
+                height: 1.5px;
+            }
+            .card {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .card h3 {
+                font-size: 1em;
+            }
+            ul li {
+                font-size: 0.8em;
+                padding-left: 12px;
+            }
+            #skills ul li, #interests ul li, #languages ul li {
+                padding: 5px 10px;
+                font-size: 0.7em;
+            }
+            #contact .btn {
+                font-size: 0.8em;
+                padding: 8px 15px;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            #request-resume-btn {
+                width: 100%;
+                text-align: center;
             }
         }
 
@@ -388,16 +483,16 @@
                 <li><a href="#interests">Interests</a></li>
                 <li><a href="#languages">Languages</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="mailto:varunchaskarvc@duck.com?subject=Resume Request for [Role] at [Company]&body=Dear Varun,%0D%0A%0D%0AI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.%0D%0A%0D%0AThanks,%0D%0A[Your Name]" id="request-resume-btn">
+                    <i class="fas fa-file-alt"></i> Request Resume
+                </a></li>
             </ul>
         </nav>
-        <a href="mailto:varunchaskarvc@duck.com?subject=Resume Request for [Role] at [Company]&body=Dear Varun,%0D%0A%0D%0AI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.%0D%0A%0D%0AThanks,%0D%0A[Your Name]" id="request-resume-btn">
-            <i class="fas fa-file-alt"></i> Request Resume
-        </a>
     </header>
     <section id="hero">
         <div class="content">
             <h1>VarunChaskar</h1>
-            <p class="typewriter">Tech Enthusiast & IT Support Specialist.. </p>
+            <p class="typewriter">Tech Enthusiast & IT Contact Specialist.. </p>
         </div>
     </section>
     <section id="about">
@@ -560,6 +655,22 @@
                 particlesDiv.appendChild(particle);
             }
         }
+
+        // Header Hide/Show on Scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.scrollY;
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scrolling down and past 100px, hide header
+                header.classList.add('hidden');
+            } else {
+                // Scrolling up or at the top, show header
+                header.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
