@@ -54,7 +54,7 @@
             padding: 15px 20px;
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* Distributes space between nav and button */
             align-items: center;
             flex-wrap: wrap;
             transition: transform 0.3s ease; /* Smooth hide/show transition */
@@ -82,13 +82,15 @@
             font-weight: 600;
             letter-spacing: 1px;
             transition: color 0.3s ease;
+            display: flex;
+            align-items: center; /* Center icon and text vertically */
         }
 
         nav ul li a:hover {
             color: #ff007a;
         }
 
-        /* Request Resume Button in Header */
+        /* Request Resume Button in Header (Right-Aligned) */
         #request-resume-btn {
             border: calc(0.08 * var(--m)) solid transparent;
             color: #F3F3F3;
@@ -145,30 +147,16 @@
             z-index: 10;
         }
 
-      #hero h1 {
-    font-size: 3.5em;
-    background: linear-gradient(90deg, #4D8AFF, #6B5FFF, #FF64F9, #FF6D1B); /* Blue → Purple → Pink → Orange */
-    -webkit-background-clip: text; /* For Safari */
-    background-clip: text; /* Clip the gradient to the text shape */
-    color: transparent; /* Make the text color transparent to show the gradient */
-    background-size: 200%;
-    animation: animate 2s infinite linear; /* Match the button’s animation */
-    text-align: center;
-}
-
-@keyframes animate {
-    0% { background-position: 0; }
-    100% { background-position: 200%; }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #00d4ff;
-    }
-    to {
-        text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff, 0 0 25px #00d4ff;
-    }
-}
+        #hero h1 {
+            font-size: 3.5em;
+            background: linear-gradient(90deg, #4D8AFF, #6B5FFF, #FF64F9, #FF6D1B); /* Blue → Purple → Pink → Orange */
+            -webkit-background-clip: text; /* For Safari */
+            background-clip: text; /* Clip the gradient to the text shape */
+            color: transparent; /* Make the text color transparent to show the gradient */
+            background-size: 200%;
+            animation: animate 2s infinite linear; /* Match the button’s animation */
+            text-align: center;
+        }
 
         #hero .typewriter {
             font-size: 1.5em;
@@ -370,7 +358,7 @@
             }
             #request-resume-btn {
                 margin-top: 10px;
-                width: auto;
+                width: auto; /* Reset to auto for right alignment on desktop */
                 text-align: center;
                 font-size: 0.9rem;
                 padding: 0.3rem 0.6rem;
@@ -502,11 +490,13 @@
                 <li><a href="#interests">Interests</a></li>
                 <li><a href="#languages">Languages</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="mailto:varunchaskarvc@duck.com?subject=Resume Request for [Role] at [Company]&body=Dear Varun,%0D%0A%0D%0AI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.%0D%0A%0D%0AThanks,%0D%0A[Your Name]" id="request-resume-btn">
-                    <i class="fas fa-file-alt"></i> Request Resume
-                </a></li>
             </ul>
         </nav>
+        <a href="mailto:varunchaskarvc@duck.com?subject=Resume Request for [Role] at [Company]&body=Dear Varun,%0D%0A%0D%0AI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.%0D%0A%0D%0AThanks,%0D%0A[Your Name]"
+           id="request-resume-btn"
+           class="nav-btn">
+            <i class="fas fa-file-alt"></i> Request Resume
+        </a>
     </header>
     <section id="hero">
         <div class="content">
@@ -675,20 +665,18 @@
             }
         }
 
-        // Header Hide/Show on Scroll
-        let lastScroll = 0;
+        // Header Hide/Show on Scroll (Visible only when scrolled to the very top)
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             const currentScroll = window.scrollY;
 
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                // Scrolling down and past 100px, hide header
-                header.classList.add('hidden');
-            } else {
-                // Scrolling up or at the top, show header
+            if (currentScroll === 0) {
+                // Show header only when scrolled to the top (scrollY = 0)
                 header.classList.remove('hidden');
+            } else {
+                // Hide header when scrolled down at all
+                header.classList.add('hidden');
             }
-            lastScroll = currentScroll;
         });
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -733,6 +721,25 @@
             }
         `;
         document.head.appendChild(styleSheet);
+
+        // Handle mailto: link with fallback
+        document.getElementById('request-resume-btn').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default mailto behavior
+            const email = 'varunchaskarvc@duck.com';
+            const subject = 'Resume Request for [Role] at [Company]';
+            const body = 'Dear Varun,\n\nI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.\n\nThanks,\n[Your Name]';
+
+            // Try to open the default email client
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+
+            // Fallback: Show an alert if mailto fails
+            setTimeout(() => {
+                if (window.location.href === mailtoLink) {
+                    alert('Your default email client could not be opened. Please copy this email address and send a request manually: ' + email);
+                }
+            }, 1000); // Wait 1 second to check if the email client opened
+        });
     </script>
 </body>
 </html>
