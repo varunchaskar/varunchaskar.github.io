@@ -6,25 +6,10 @@
     <title>VarunChaskar - Tech Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            /* Change this for scaling */
-            --m: 4rem;
-
-            --red: #FF6565;
-            --pink: #FF64F9;
-            --purple: #6B5FFF;
-            --blue: #4D8AFF;
-            --green: #5BFF89;
-            --yellow: #FFEE55;
-            --orange: #FF6D1B;
         }
 
         body {
@@ -51,12 +36,8 @@
             top: 0;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
-            padding: 15px 20px;
+            padding: 15px 0;
             z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
         }
 
         nav ul {
@@ -81,52 +62,7 @@
             color: #ff007a;
         }
 
-
-        #request-resume-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    border: calc(0.08 * var(--m)) solid transparent;
-    color: #F3F3F3;
-    font-family: 'Space Grotesk';
-    font-size: 1.2rem; /* font size for desktop */
-    border-radius: calc(0.7 * var(--m));
-    padding: 0.5rem 1rem; /* padding for desktop */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    background: linear-gradient(#121213, #121213), linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)), linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
-    background-origin: border-box;
-    background-clip: padding-box, border-box, border-box;
-    background-size: 200%;
-    animation: animate 2s infinite linear;
-}
-
-        #request-resume-btn::before {
-            content: '';
-            background: linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
-            height: 5%;
-            width: 5%;
-            position: absolute;
-            bottom: -5%;
-            z-index: -5;
-            background-size: 200%;
-            animation: animate 2s infinite linear;
-            filter: blur(calc(0.8 * var(--m)));
-        }
-
-        #request-resume-btn:hover, #request-resume-btn:hover::before {
-            animation: animate 0.5s infinite linear;
-        }
-
-        @keyframes animate {
-            0% { background-position: 0; }
-            100% { background-position: 200%; }
-        }
-
-          #hero {
+        #hero {
             height: 100vh;
             display: flex;
             align-items: center;
@@ -258,7 +194,6 @@
             gap: 20px;
             justify-content: center;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
         #contact .btn {
@@ -321,35 +256,19 @@
             background: #ff007a;
         }
 
-        /* Mobile Support */
         @media (max-width: 768px) {
-    header {
-        padding: 10px;
-        flex-direction: column;
-        align-items: center;
-    }
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-    }
-    nav ul li {
-        margin: 10px 0;
-    }
-    #request-resume-btn {
-        position: static;
-        margin-top: 10px;
-        width: 100%;
-        text-align: center;
-        font-size: 1rem; /* Smaller font size for mobile */
-        padding: 0.4rem 0.8rem; /* Smaller padding for mobile */
-    }
-}
             #hero h1 {
                 font-size: 2em;
             }
             #hero .typewriter {
                 font-size: 1em;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul li {
+                margin: 10px 0;
             }
             section {
                 padding: 40px 10px;
@@ -360,16 +279,6 @@
             #contact .buttons {
                 flex-direction: column;
                 gap: 15px;
-            }
-            #contact .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media screen and (max-width: 1000px) {
-            :root {
-                --m: 2rem;
             }
         }
     </style>
@@ -390,9 +299,6 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <a href="mailto:varunchaskarvc@duck.com?subject=Resume Request for [Role] at [Company]&body=Dear Varun,%0D%0A%0D%0AI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.%0D%0A%0D%0AThanks,%0D%0A[Your Name]" id="request-resume-btn">
-            <i class="fas fa-file-alt"></i> Request Resume
-        </a>
     </header>
     <section id="hero">
         <div class="content">
