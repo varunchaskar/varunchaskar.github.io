@@ -3,111 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varun Chaskar - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>VarunChaskar - Tech Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Particle Background */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff007a;
+        }
+
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero .content {
+            z-index: 10;
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        #hero .typewriter {
+            font-size: 1.5em;
+            color: #ff007a;
+            overflow: hidden;
+            border-right: 2px solid #ff007a;
+            white-space: nowrap;
+            animation: typing 5s steps(46, end) infinite, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #ff007a; }
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #ff007a;
+            bottom: -10px;
+            left: 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .card h3 {
+            color: #ff007a;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        ul li::before {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+        }
+
+        #skills ul, #interests ul, #languages ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #skills ul li, #interests ul li, #languages ul li {
+            background: #00d4ff;
+            color: #1a1a1a;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+        }
+
+        #skills ul li:hover, #interests ul li:hover, #languages ul li:hover {
+            background: #ff007a;
+            color: #fff;
+        }
+
+        /* Contact Buttons Styling */
+        #contact .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #contact .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #contact .btn i {
+            margin-right: 8px;
+        }
+
+        #contact .btn.email {
+            background: #ff007a;
+            color: #fff;
+        }
+
+        #contact .btn.email:hover {
+            background: #00d4ff;
+            transform: scale(1.05);
+        }
+
+        #contact .btn.linkedin {
+            background: #00d4ff;
+            color: #1a1a1a;
+        }
+
+        #contact .btn.linkedin:hover {
+            background: #ff007a;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 20px;
+            color: #888;
+        }
+
+        #scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #00d4ff;
+            color: #1a1a1a;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: background 0.3s ease;
+        }
+
+        #scroll-top:hover {
+            background: #ff007a;
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2em;
+            }
+            #hero .typewriter {
+                font-size: 1em;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            section {
+                padding: 40px 10px;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            #contact .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div id="particles"></div>
     <header>
-        <h1>Varun Chaskar</h1>
-        <p>Passionate about leveraging technology to tackle real-world challenges</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#languages">Languages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-
+    <section id="hero">
+        <div class="content">
+            <h1>VarunChaskar</h1>
+            <p class="typewriter">Tech Enthusiast & IT Support Specialist.. </p>
+        </div>
+    </section>
     <section id="about">
         <h2>About Me</h2>
-        <p>Experienced Tech Enthusiast with almost 5 years of extensive IT Support experience, currently working as a Technical
-        Support Professional in TomTom. Proficient in various positions, did 1.7 years of service as a Service Desk Administrator
-        in Wipro which I handle critical devices for Client John Lewis & Partners. Resolved 5,000+ incidents and awarded the
-        Rising Star Award for Outstanding Performance in Wipro and freelance experience for 2.7 years multi-skilled at resolution
-        of IT issues and provision of exceptional customer service. I like to use technology to solve real world problems.</p>
+        <div class="card">
+            <p>Experienced Tech Enthusiast with nearly 5 years of IT Support experience, currently working as a Product Support Engineer at DNV. Previously at TomTom, I achieved an 80% first-contact resolution rate. I spent 1.7 years at Wipro as a Service Desk Administrator for John Lewis & Partners and have 2.7 years of freelance experience. I’ve resolved over 5,000 incidents, earning the Rising Star Award at Wipro. Passionate about solving IT challenges and delivering top-notch customer service.</p>
+        </div>
     </section>
-
     <section id="experience">
-        <h2>Professional Experience</h2>
-
-        <h2>Technical Support Professional, TomTom</h2>
-<p><strong>03/2024 – Present | Pune, Remote</strong></p>
-<p>Technical Support</p>
-<p>Presales Advice & Troubleshooting</p>
-<p>• Utilized previous experience and knowledge to improve the efficiency and quality of support.</p>
-<p>• Adhered to implemented processes and procedures to ensure compliance and successful delivery of new tasks.</p>
-<p>• Performed regular tasks accurately, following procedures meticulously to meet all requirements and deadlines.</p>
-<p>• Provided end user and retail support for TomTom devices, achieving a technical resolution rate of over 82% on first contact.</p>
-<p>• Offered expert presales advice and handled troubleshooting, resulting in a 20% increase in new customer satisfaction and conversion.</p>
-<p>• Supported post-sales logistics processes, achieving a 15% reduction in return TAT (Turnaround Time).</p>
-<p>• Gathered and communicated customer feedback to the business, which led to a 10% improvement in product quality and customer satisfaction.</p>
-<p>• Investigated and resolved client complaints, achieving an 85% success rate and fostering strengthened customer relations.</p>
-<p><strong>Tools Used:</strong> Zendesk, Unbabel, Intershop, SAT2 Admin, Curts RMA, IATA, CIDI, DIS.</p>
-<ul>
-
-<ul/>
-<h2>Service Desk Administrator, Wipro Technologies</h2>
-<p><strong>07/2022 – 01/2024 | Pune, India</strong></p>
-<p>1st Line Support Team Member</p>
-<p>Incident Management</p>
-<p>Device Support & Troubleshooting</p>
-<p>Cybersecurity Support</p>
-<p>• Worked as an integral member of the Incident Team & 1st Line Support Team at John Lewis and Partners, achieving 100% compliance with SLA by providing critical device support.</p>
-<p>• Served as the main channel for all IT issues, delivering consistent and up-to-date status on tickets, which facilitated a 20% decrease in resolution time.</p>
-<p>• Leveraged troubleshooting capabilities to research and resolve inquiries on the ServiceNow platform, consistently achieving or exceeding the agreed Service Level for First Call Resolution.</p>
-<p>• Conducted remote troubleshooting using SCCM for identifying, categorizing, and rating incidents, which helped achieve a 90% first-call resolution rate.</p>
-<p>• Maintained updated group policies on users' machines and logged incidents to 3rd Party Vendors through the portal or via ServiceNow Integration, ensuring no downtime while staying in compliance.</p>
-<p>• Increased device uptime by 15% through automatic incident alerts for Zebra devices (TC51, TC52, TC57, and MC18) and monitored multi-function devices on AirWatch.</p>
-<p>• Supplied Meraki with device usage information for branch customers, which increased the efficiency of their devices by 10%.</p>
-<p>• Worked closely with the Cybersecurity Team to detect, classify, and rank potential security incidents such as phishing attacks or trojans, reducing the response time for incidents by 25%.</p>
-<p>• Utilized McAfee ePO Endpoint management, Trillix, and PingID to manage and maintain endpoint security across the organization’s network.</p>
-<p>• Resolved incidents promptly and effectively, maintaining a 99 to 100% Quality rating and closing over 5000+ incidents.</p>
-<p>• Provided training and support to end-users on best practices for cybersecurity awareness and effective utilization of McAfee ePO features.</p>
-<p><strong>Tools Used:</strong> VMware Workspace (Airwatch), ServiceNow, VMware Vsphere, SolarWinds, Meraki, Cisco Unified Management System, Active Directory, Mainframe, RDP, VMware Horizon, Lotus Notes, SCCM, McAfee ePO, Trillix, PingID.</p>
-
-        </ul>
-        <p>Tools Used: VMware Workspace (Airwatch), ServiceNow, VMware vSphere, SolarWinds, Meraki, Cisco Unified Management System, Active Directory, Mainframe, RDP, VMware Horizon, Lotus Notes, SCCM</p>
-
-        <h2>Freelancer</h2>
-        <p><strong>08/2019 – 02/2022 | Pune, Remote</strong></p>
-        <p>Web Developer (Bootstrap, WordPress, Wix, Squarespace)</p>
-        <p>Technical Support</p>
-        <p>Technology Consultant</p>
-        <p>Client - Direct Clients from Fiverr.com, Freelancing.com</p>
-        <p>Tools Used - Google Analytics, SEMrush, Team Viewer, AnyDesk, PayPal, Stripe, Dropbox, Google Drive, Canva, CyberPanel, WordPress, Putty, Sublime Text, Atom, Hetzner Cloud.</p>
-
-        <h2>Custom Rom Tester, XDA Developers (Volunteer)</h2>
-        <p><strong>08/2017 – 12/2019</strong></p>
-        <p>Custom Rom Tester</p>
-        <p>Android Rooting Specialist</p>
-        <p>Tools Used - Magisk, SuperSU, Genymotion, SP Flash Tool, Odin, LineageOS, Bugzilla, MatLog, Geekbench, Antutu Benchmark, Open GApps, TWRP (Team Win Recovery Project), OrangeFox Recovery, Android Debug Bridge (ADB), Fastboot, EX Kernel Manager.</p>
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>Product Support Engineer</h3>
+            <p>DNV | Oct 2024 - Present | India</p>
+            <ul>
+                <li>Support ShipManager software with >80% resolution rate on first contact.</li>
+                <li>Manage client communications via email/chat for troubleshooting.</li>
+                <li>Use Echolon ticketing tool for efficient issue tracking.</li>
+                <li>Handle server/user accounts with Toolbox, Azure AD, and Windows Server.</li>
+            </ul>
+            <p><strong>Tools:</strong> ShipManager, Echolon, Azure AD, VMware, Royal TS, TeamViewer, SQL Anywhere</p>
+        </div>
+        <div class="card">
+            <h3>Technical Support Professional</h3>
+            <p>TOMTOM | Mar 2024 - Sep 2024 | Pune, India</p>
+            <ul>
+                <li>Achieved >82% resolution rate for TomTom device support.</li>
+                <li>Boosted customer satisfaction by 20% with presales advice.</li>
+                <li>Reduced return TAT by 15% in post-sales logistics.</li>
+            </ul>
+            <p><strong>Tools:</strong> Zendesk, Unbabel, Intershop, SAT2 Admin</p>
+        </div>
+        <div class="card">
+            <h3>Service Desk Analyst</h3>
+            <p>WIPRO | Jul 2022 - Jan 2024 | Pune, India</p>
+            <ul>
+                <li>Supported John Lewis & Partners with 100% SLA compliance.</li>
+                <li>Reduced resolution time by 20% with timely updates.</li>
+                <li>Achieved 90% first-call resolution via SCCM troubleshooting.</li>
+            </ul>
+            <p><strong>Tools:</strong> ServiceNow, VMware, SCCM, McAfee ePO</p>
+        </div>
+        <div class="card">
+            <h3>Freelancer</h3>
+            <p>Aug 2019 - Feb 2022 | India - Remote</p>
+            <ul>
+                <li>Web Developer using Bootstrap, WordPress, Wix.</li>
+                <li>Provided technical support and consulting for clients.</li>
+            </ul>
+            <p><strong>Tools:</strong> Google Analytics, SEMrush, WordPress, TeamViewer</p>
+        </div>
+        <div class="card">
+            <h3>Custom ROM Tester (Volunteer)</h3>
+            <p>XDA Developers | Aug 2017 - Dec 2019 | India - Remote</p>
+            <ul>
+                <li>Tested Android ROMs for stability and performance.</li>
+                <li>Specialized in rooting and firmware customization.</li>
+            </ul>
+            <p><strong>Tools:</strong> Magisk, LineageOS, TWRP, ADB</p>
+        </div>
     </section>
-
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Technical Support</li>
+            <li>IT Support</li>
+            <li>Customer Service</li>
+            <li>Troubleshooting</li>
+            <li>Web Development</li>
+            <li>Cybersecurity</li>
+            <li>Endpoint Management</li>
+            <li>Virtualization</li>
+            <li>Active Directory</li>
+            <li>SQL</li>
+        </ul>
+    </section>
     <section id="education">
         <h2>Education</h2>
-        <p><strong>B.Sc Computer Science - Savitribai Phule Pune University</strong></p>
-        <p><em>2020</em></p>
-        <p><strong>H.S.C - Maharashtra State Board</strong></p>
-        <p><em>2017</em></p>
-        <p><strong>S.S.C - Maharashtra State Board</strong></p>
-        <p><em>2015</em></p>
+        <div class="card">
+            <h3>B.Sc Computer Science</h3>
+            <p>D Y Patil ACS College | 2020 | 73.4%</p>
+        </div>
+        <div class="card">
+            <h3>Higher Secondary Certificate</h3>
+            <p>D.Y.Patil ACS Junior College | 2017 | Science</p>
+        </div>
     </section>
-
     <section id="awards">
         <h2>Awards</h2>
-        <p><strong>Wipro Rising Star Award, Wipro Technologies</strong></p>
-        <p><em>2023</em></p>
-        <p>Received Wipro Rising Star Award presented by Alex Bowles, Head of Infrastructure at John Lewis & Partners, in recognition of outstanding contributions and dedication to service excellence.</p>
-        <p><strong>ZONAL Championship's National Workshop Training Machine Learning Competition, 2019</strong></p>
-        <p>Emerged as the champion in the prestigious Machine Learning competition during the ZONAL Championship's National Workshop Cum Training organized by IIT Madras. This victory signifies a strong grasp of machine learning concepts and exceptional problem-solving skills.</p>
-        <p><strong>3rd Rank in Electronics Project Competition, 2018</strong></p>
-        <p>Achieved 3rd place in a challenging electronics project competition in 2018, focusing on the development of a Flame Sensor system.</p>
-        <p><strong>Best All Rounder Performance at Cricket Sports Event in College, 2017</strong></p>
-        <p>Displayed outstanding skills and versatility in both sports and academics, recognized as the Best All Rounder in a college cricket sports event in 2017.</p>
+        <div class="card">
+            <h3>Wipro Rising Star Award</h3>
+            <p>Wipro Technologies | 2023</p>
+            <p>Resolved 5,000+ incidents with 100% quality score.</p>
+        </div>
+        <div class="card">
+            <h3>Machine Learning Competition</h3>
+            <p>ZONAL Championship | 2019</p>
+            <p>Championed by IIT Madras.</p>
+        </div>
     </section>
-
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="card">
+            <h3>Google Cloud Fundamentals</h3>
+            <p>Google | Mar 2022</p>
+        </div>
+        <div class="card">
+            <h3>Cyber Olympiad</h3>
+            <p>DPU | 2019-2020 | 2nd Rank</p>
+        </div>
+    </section>
+    <section id="interests">
+        <h2>Interests</h2>
+        <ul>
+            <li>Gaming</li>
+            <li>VR/AR</li>
+            <li>PC Building</li>
+            <li>Troubleshooting</li>
+        </ul>
+    </section>
+    <section id="languages">
+        <h2>Languages</h2>
+        <ul>
+            <li>Marathi - Native</li>
+            <li>Hindi - Native</li>
+            <li>English - Fluent</li>
+        </ul>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="card">
+            <p>Get in touch with me:</p>
+            <div class="buttons">
+                <a href="mailto:varunchaskarvc@duck.com" class="btn email">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://www.linkedin.com/in/varunchaskar" target="_blank" class="btn linkedin">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
     <footer>
-        <a href="https://www.linkedin.com/in/varunchaskar" target="_blank" class="linkedin-button">
-            <i class="fab fa-linkedin"></i> Connect with me on LinkedIn
-        </a>
-        <a href="mailto:varunchaskarvc@duck.com" class="email-button">
-            <i class="far fa-envelope"></i> Email me
-        </a>
+        <p>© 2025 VarunChaskar. All Rights Reserved.</p>
     </footer>
+    <button id="scroll-top"><i class="fas fa-arrow-up"></i></button>
+    <script>
+        // Particle Background
+        function createParticles() {
+            const particlesDiv = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.background = 'rgba(0, 212, 255, 0.5)';
+                particle.style.borderRadius = '50%';
+                particle.style.width = Math.random() * 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animation = `float ${Math.random() * 10 + 5}s infinite`;
+                particlesDiv.appendChild(particle);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => observer.observe(section));
+
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', e => {
+                    e.preventDefault();
+                    const targetId = anchor.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            const scrollTop = document.getElementById('scroll-top');
+            window.addEventListener('scroll', () => {
+                scrollTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+            });
+
+            scrollTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Particle Animation
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes float {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(-20vh); }
+                100% { transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
 </body>
 </html>
