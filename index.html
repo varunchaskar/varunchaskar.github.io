@@ -145,11 +145,30 @@
             z-index: 10;
         }
 
-        #hero h1 {
-            font-size: 3.5em;
-            color: #00d4ff;
-            margin-bottom: 20px;
-        }
+      #hero h1 {
+    font-size: 3.5em;
+    background: linear-gradient(90deg, #4D8AFF, #6B5FFF, #FF64F9, #FF6D1B); /* Blue → Purple → Pink → Orange */
+    -webkit-background-clip: text; /* For Safari */
+    background-clip: text; /* Clip the gradient to the text shape */
+    color: transparent; /* Make the text color transparent to show the gradient */
+    background-size: 200%;
+    animation: animate 2s infinite linear; /* Match the button’s animation */
+    text-align: center;
+}
+
+@keyframes animate {
+    0% { background-position: 0; }
+    100% { background-position: 200%; }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #00d4ff;
+    }
+    to {
+        text-shadow: 0 0 5px #00d4ff, 0 0 15px #00d4ff, 0 0 25px #00d4ff;
+    }
+}
 
         #hero .typewriter {
             font-size: 1.5em;
@@ -491,7 +510,7 @@
     </header>
     <section id="hero">
         <div class="content">
-            <h1>VarunChaskar</h1>
+            <h1>Varun Chaskar</h1>
             <p class="typewriter">Tech Enthusiast & IT Contact Specialist.. </p>
         </div>
     </section>
