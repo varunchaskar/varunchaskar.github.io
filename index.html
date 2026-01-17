@@ -81,19 +81,6 @@
             transform: translateZ(0);
         }
 
-        .particle-layer-1 {
-            animation: parallax 40s linear infinite;
-        }
-
-        .particle-layer-2 {
-            animation: parallax 60s linear infinite;
-        }
-
-        @keyframes parallax {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
             50% { transform: translateY(-30vh) rotate(180deg); opacity: 1; }
@@ -263,7 +250,7 @@
             overflow: hidden;
             margin: 0 auto;
             letter-spacing: 1px;
-            animation: typing 4s steps(46, end) infinite, blink 0.8s step-end infinite;
+            animation: typing 4s steps(60, end) infinite, blink 0.8s step-end infinite;
         }
 
         .typewriter-2 {
@@ -302,6 +289,25 @@
         section.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            color: #00d4ff;
+            margin-bottom: 30px;
+            position: relative;
+            text-align: center;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #ff007a);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .card {
@@ -591,7 +597,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <a href="mailto:debug-had-amaze@duck.com?subject=Resume Request for [Role] at [Company]&body=Dear Varun,%0D%0A%0D%0AI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.%0D%0A%0D%0AThanks,%0D%0A[Your Name]"
+        <a href="mailto:varunchaskarvc@duck.com?subject=Resume Request for [Role] at [Company]&body=Dear Varun,%0D%0A%0D%0AI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.%0D%0A%0D%0AThanks,%0D%0A[Your Name]"
            id="request-resume-btn"
            class="nav-btn">
             <i class="fas fa-file-alt"></i> Request Resume
@@ -600,75 +606,93 @@
     <section id="hero">
         <div class="content">
             <h1>Varun Chaskar</h1>
-            <p class="typewriter">Tech Enthusiast & IT Contact Specialist</p>
-            <p class="typewriter-2">Building seamless tech experiences</p>
+            <p class="typewriter">TSE at Microsoft | 2x Microsoft Certified | AZ-900, AI-900</p>
+            <p class="typewriter-2">M365 Cloud Support | 80%+ FCR | Tech Enthusiast</p>
         </div>
     </section>
     <section id="about" class="fade-in">
         <h2>About Me</h2>
         <div class="card">
-            <p>I’m an experienced tech enthusiast with almost 5 years of extensive IT support experience. Most recently, I worked as a Product Support Engineer at DNV, where I provided client support for ShipManager software and collaborated with global teams to ensure smooth technical operations.
-
-Previously, I served as a Technical Support Professional at TomTom, delivering end-user and retail support for navigation devices with over 80% first-contact resolution and a 15% reduction in return turnaround time. Earlier, at Wipro Technologies, I worked as a Service Desk Administrator for John Lewis & Partners, resolving 5,000+ incidents and earning the Rising Star Award for outstanding performance.
-
-I also bring 2.7 years of freelance experience, assisting clients with WordPress setup and configuration. Passionate about technology, I enjoy simplifying complex issues and creating efficient, user-focused solutions.</p>
+            <p>Technical Support Engineer at Microsoft with 5+ years of extensive IT Support experience. 2x Microsoft Certified (Azure Fundamentals AZ-900 & Azure AI Fundamentals AI-900). Previously worked at DNV, TomTom, and Wipro, specializing in M365 Cloud Support with 80%+ First Contact Resolution. Proficient in End-User Support, SaaS Platforms, ServiceNow, Zendesk, SCCM, VMware, Windows, MacOS, and Linux. Resolved 5,000+ incidents and awarded the Rising Star Award for Outstanding Performance at Wipro. Passionate about leveraging technology to solve real-world problems and delivering exceptional customer service.</p>
         </div>
     </section>
     <section id="experience" class="fade-in">
         <h2>Experience</h2>
+
         <div class="card fade-in" style="animation-delay: 0.1s">
-            <h3>Product Support Engineer @ DNV</h3>
-            <p>From Oct 2024 - March 2025 | India</p>
+            <h3>Technical Support Engineer @ Microsoft</h3>
+            <p>Dec 2025 - Present | Pune, Maharashtra, India</p>
             <ul>
-                <li>Support ShipManager software with >80% resolution rate on first contact.</li>
-                <li>Manage client communications via email/chat for troubleshooting.</li>
-                <li>Use Echolon ticketing tool for efficient issue tracking.</li>
-                <li>Handle server/user accounts with Toolbox, Azure AD, and Windows Server.</li>
+                <li>Providing M365 Cloud Support with expertise in SharePoint, OneDrive, and Microsoft 365 services</li>
+                <li>Achieved 2x Microsoft Certifications (AZ-900, AI-900) within first 2 months</li>
+                <li>Maintaining 80%+ First Contact Resolution rate</li>
+                <li>Supporting enterprise customers with complex technical issues</li>
+            </ul>
+            <p><strong>Tools:</strong> SharePoint, M365, OneDrive, Azure AD, Microsoft Teams</p>
+        </div>
+
+        <div class="card fade-in" style="animation-delay: 0.2s">
+            <h3>Product Support Engineer @ DNV</h3>
+            <p>Oct 2024 - Mar 2025 | Pune, Maharashtra, India</p>
+            <ul>
+                <li>Support ShipManager software with >80% resolution rate on first contact</li>
+                <li>Manage client communications via email/chat for troubleshooting</li>
+                <li>Use Echolon ticketing tool for efficient issue tracking</li>
+                <li>Handle server/user accounts with Toolbox, Azure AD, and Windows Server</li>
             </ul>
             <p><strong>Tools:</strong> ShipManager, Echolon, Azure AD, VMware, Royal TS, TeamViewer, SQL Anywhere</p>
         </div>
-        <div class="card fade-in" style="animation-delay: 0.2s">
-            <h3>Technical Support Professional @ Tomtom International B.V.</h3>
-            <p> From Mar 2024 - Sep 2024 | Pune, India</p>
+
+        <div class="card fade-in" style="animation-delay: 0.3s">
+            <h3>Technical Support Professional @ TomTom International B.V.</h3>
+            <p>Mar 2024 - Sep 2024 | Pune, India</p>
             <ul>
-                <li>Achieved >82% resolution rate for TomTom device support.</li>
-                <li>Boosted customer satisfaction by 20% with presales advice.</li>
-                <li>Reduced return TAT by 15% in post-sales logistics.</li>
+                <li>Achieved >82% resolution rate for TomTom device support</li>
+                <li>Boosted customer satisfaction by 20% with presales advice</li>
+                <li>Reduced return TAT by 15% in post-sales logistics</li>
             </ul>
             <p><strong>Tools:</strong> Zendesk, Unbabel, Intershop, SAT2 Admin</p>
         </div>
-        <div class="card fade-in" style="animation-delay: 0.3s">
+
+        <div class="card fade-in" style="animation-delay: 0.4s">
             <h3>Service Desk Analyst @ Wipro Technologies</h3>
-            <p>From Jul 2022 - Jan 2024 | Pune, India</p>
+            <p>Jul 2022 - Jan 2024 | Pune, India</p>
             <ul>
-                <li>Supported John Lewis & Partners with 100% SLA compliance.</li>
-                <li>Reduced resolution time by 20% with timely updates.</li>
-                <li>Achieved 90% first-call resolution via SCCM troubleshooting.</li>
+                <li>Supported John Lewis & Partners with 100% SLA compliance</li>
+                <li>Reduced resolution time by 20% with timely updates</li>
+                <li>Achieved 90% first-call resolution via SCCM troubleshooting</li>
+                <li>Resolved 5,000+ incidents with 100% quality score</li>
             </ul>
             <p><strong>Tools:</strong> ServiceNow, VMware, SCCM, McAfee ePO</p>
         </div>
-        <div class="card fade-in" style="animation-delay: 0.4s">
+
+        <div class="card fade-in" style="animation-delay: 0.5s">
             <h3>Freelancer</h3>
             <p>Aug 2019 - Feb 2022 | India - Remote</p>
             <ul>
-                <li>Web Developer using Bootstrap, WordPress, Wix.</li>
-                <li>Provided technical support and consulting for clients.</li>
+                <li>Web Developer using Bootstrap, WordPress, Wix</li>
+                <li>Provided technical support and consulting for clients</li>
             </ul>
             <p><strong>Tools:</strong> Google Analytics, SEMrush, WordPress, TeamViewer</p>
         </div>
-        <div class="card fade-in" style="animation-delay: 0.5s">
+
+        <div class="card fade-in" style="animation-delay: 0.6s">
             <h3>Custom ROM Tester (Volunteer)</h3>
             <p>XDA Developers | Aug 2017 - Dec 2019 | India - Remote</p>
             <ul>
-                <li>Tested Android ROMs for stability and performance.</li>
-                <li>Specialized in rooting and firmware customization.</li>
+                <li>Tested Android ROMs for stability and performance</li>
+                <li>Specialized in rooting and firmware customization</li>
             </ul>
             <p><strong>Tools:</strong> Magisk, LineageOS, TWRP, ADB</p>
         </div>
     </section>
+
     <section id="skills" class="fade-in">
         <h2>Skills</h2>
         <ul>
+            <li>M365 Cloud Support</li>
+            <li>SharePoint</li>
+            <li>Azure</li>
             <li>Technical Support</li>
             <li>IT Support</li>
             <li>Customer Service</li>
@@ -679,43 +703,81 @@ I also bring 2.7 years of freelance experience, assisting clients with WordPress
             <li>Virtualization</li>
             <li>Active Directory</li>
             <li>SQL</li>
+            <li>ServiceNow</li>
+            <li>Zendesk</li>
+            <li>SCCM</li>
+            <li>VMware</li>
+            <li>Windows</li>
+            <li>MacOS</li>
+            <li>Linux</li>
         </ul>
     </section>
+
     <section id="education" class="fade-in">
         <h2>Education</h2>
         <div class="card fade-in" style="animation-delay: 0.1s">
             <h3>B.Sc Computer Science</h3>
-            <p>D Y Patil ACS College | 2020 | 73.4%</p>
+            <p>Dr. D. Y. Patil Institute of Technology, Pimpri, Pune | 2017 - 2020</p>
+            <p>Grade: 73.11% - First Class with Distinction</p>
         </div>
         <div class="card fade-in" style="animation-delay: 0.2s">
             <h3>Higher Secondary Certificate</h3>
-            <p>D.Y.Patil ACS Junior College | 2017 | Science</p>
+            <p>Dr. D. Y. Patil Vidyapeeth | 2015 - 2017</p>
+            <p>Stream: Science - PCM IT GEO ENG</p>
         </div>
     </section>
+
     <section id="awards" class="fade-in">
-        <h2>Awards</h2>
+        <h2>Awards & Achievements</h2>
         <div class="card fade-in" style="animation-delay: 0.1s">
             <h3>Wipro Rising Star Award</h3>
             <p>Wipro Technologies | 2023</p>
-            <p>Resolved 5,000+ incidents with 100% quality score.</p>
+            <p>Resolved 5,000+ incidents with 100% quality score</p>
         </div>
         <div class="card fade-in" style="animation-delay: 0.2s">
-            <h3>Machine Learning Competition</h3>
-            <p>ZONAL Championship | 2019</p>
-            <p>Championed by IIT Madras.</p>
+            <h3>Machine Learning - ZONAL Championship</h3>
+            <p>IIT Madras | 2019</p>
+            <p>Zonal Championship recognition</p>
+        </div>
+        <div class="card fade-in" style="animation-delay: 0.3s">
+            <h3>Cyber Olympiad</h3>
+            <p>DPU - Institute of Distance Learning | 2019-2020</p>
+            <p>2nd Rank Achievement</p>
         </div>
     </section>
+
     <section id="certifications" class="fade-in">
         <h2>Certifications</h2>
         <div class="card fade-in" style="animation-delay: 0.1s">
-            <h3>Google Cloud Fundamentals</h3>
-            <p>Google | Mar 2022</p>
+            <h3>Microsoft Certified: Azure Fundamentals (AZ-900)</h3>
+            <p>Microsoft | Jan 2026</p>
+            <p>Credential ID: B8A73C6F597FC873</p>
         </div>
         <div class="card fade-in" style="animation-delay: 0.2s">
-            <h3>Cyber Olympiad</h3>
-            <p>DPU | 2019-2020 | 2nd Rank</p>
+            <h3>Microsoft Certified: Azure AI Fundamentals (AI-900)</h3>
+            <p>Microsoft | Dec 2025</p>
+            <p>Credential ID: D898523D3E269ED5</p>
+        </div>
+        <div class="card fade-in" style="animation-delay: 0.3s">
+            <h3>OneDrive SharePoint (ODSP) Foundation Assessment</h3>
+            <p>QA Ltd | Jan 2026</p>
+        </div>
+        <div class="card fade-in" style="animation-delay: 0.4s">
+            <h3>Google Cloud Fundamentals: Core Infrastructure</h3>
+            <p>Google | Mar 2022</p>
+            <p>Credential ID: SEGD6WN2U7US</p>
+        </div>
+        <div class="card fade-in" style="animation-delay: 0.5s">
+            <h3>Career Essentials in System Administration</h3>
+            <p>Microsoft & LinkedIn | Nov 2023</p>
+        </div>
+        <div class="card fade-in" style="animation-delay: 0.6s">
+            <h3>Essential Marketing Frameworks</h3>
+            <p>University of Washington | Jul 2025</p>
+            <p>Credential ID: MJATQWH64BHY</p>
         </div>
     </section>
+
     <section id="interests" class="fade-in">
         <h2>Interests</h2>
         <ul>
@@ -723,8 +785,11 @@ I also bring 2.7 years of freelance experience, assisting clients with WordPress
             <li>VR/AR</li>
             <li>PC Building</li>
             <li>Troubleshooting</li>
+            <li>Cloud Computing</li>
+            <li>AI & Machine Learning</li>
         </ul>
     </section>
+
     <section id="languages" class="fade-in">
         <h2>Languages</h2>
         <ul>
@@ -733,12 +798,13 @@ I also bring 2.7 years of freelance experience, assisting clients with WordPress
             <li>English - Fluent</li>
         </ul>
     </section>
+
     <section id="contact" class="fade-in" style="animation-delay: 0.1s">
         <h2>Contact</h2>
         <div class="card">
             <p>Get in touch with me:</p>
             <div class="buttons">
-                <a href="mailto:debug-had-amaze@duck.com" class="btn email">
+                <a href="mailto:varunchaskarvc@duck.com" class="btn email">
                     <i class="fas fa-envelope"></i> Email
                 </a>
                 <a href="https://www.linkedin.com/in/varunchaskar" target="_blank" class="btn linkedin">
@@ -747,10 +813,13 @@ I also bring 2.7 years of freelance experience, assisting clients with WordPress
             </div>
         </div>
     </section>
+
     <footer>
-        <p>© 2025 VarunChaskar. All Rights Reserved.</p>
+        <p>© 2026 VarunChaskar. All Rights Reserved.</p>
     </footer>
+
     <button id="scroll-top"><i class="fas fa-arrow-up"></i></button>
+
     <script>
         // Create particle background with multiple colors and smoother animation
         function createParticles() {
@@ -789,11 +858,11 @@ I also bring 2.7 years of freelance experience, assisting clients with WordPress
             const header = document.querySelector('header');
             const currentScroll = window.scrollY;
 
-            if (currentScroll > lastScrollTop) {
-                // Scroll down
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                // Scroll down - hide header
                 header.classList.add('hidden');
             } else {
-                // Scroll up
+                // Scroll up - show header
                 header.classList.remove('hidden');
             }
 
@@ -846,7 +915,7 @@ I also bring 2.7 years of freelance experience, assisting clients with WordPress
             // Resume request button click handler with fallback
             document.getElementById('request-resume-btn').addEventListener('click', function(e) {
                 e.preventDefault();
-                const email = 'debug-had-amaze@duck.com';
+                const email = 'varunchaskarvc@duck.com';
                 const subject = 'Resume Request for [Role] at [Company]';
                 const body = 'Dear Varun,\n\nI am reaching out to request your resume for the position of [Role] at [Company]. Please attach your latest resume and any additional details you think are relevant.\n\nThanks,\n[Your Name]';
                 const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
